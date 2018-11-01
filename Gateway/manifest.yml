@@ -1,0 +1,9 @@
+﻿---
+applications:
+- name: example-gateway
+  buildpack: binary_buildpack
+  path: ./publish/
+  command: ./Gateway
+  services:
+  - ocelot-service-registry
+  

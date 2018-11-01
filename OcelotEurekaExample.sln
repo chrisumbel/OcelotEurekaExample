@@ -1,0 +1,28 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway", "Gateway\Gateway.csproj", "{98DA97DC-F600-4F6D-8E10-F3E336BC5D17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackingService", "BackingService\BackingService.csproj", "{51790FA5-08AA-4C99-A08D-1946AB65173E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFAD4379-54A7-48E9-A0BA-BEFE6BEA90F0}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98DA97DC-F600-4F6D-8E10-F3E336BC5D17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98DA97DC-F600-4F6D-8E10-F3E336BC5D17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98DA97DC-F600-4F6D-8E10-F3E336BC5D17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98DA97DC-F600-4F6D-8E10-F3E336BC5D17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51790FA5-08AA-4C99-A08D-1946AB65173E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51790FA5-08AA-4C99-A08D-1946AB65173E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51790FA5-08AA-4C99-A08D-1946AB65173E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51790FA5-08AA-4C99-A08D-1946AB65173E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

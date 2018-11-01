@@ -1,0 +1,8 @@
+﻿---
+applications:
+- name: example-backing-service
+  buildpack: binary_buildpack
+  path: ./publish/
+  command: ./BackingService
+  services:
+  - ocelot-service-registry

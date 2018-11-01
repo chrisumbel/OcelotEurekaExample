@@ -1,0 +1,23 @@
+﻿{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "UpstreamPathTemplate": "/",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "https",
+      "ServiceName": "backingService",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka"
+    }
+  }
+}
