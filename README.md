@@ -18,12 +18,12 @@ similar to Zuul.
 Build
 -----
 
-Build and publish the gateway OcelotEureakExample/BackingService
+Build and publish the backing service in OcelotEureakExample/BackingService
 ```
 dotnet publish -r ubuntu.14.04-x64 -o publish
 ```
 
-Build and publish the gateway OcelotEureakExample/Gateway
+Build and publish the gateway in OcelotEureakExample/Gateway
 ```
 dotnet publish -r ubuntu.14.04-x64 -o publish
 ```
@@ -37,12 +37,12 @@ cf create-service p-service-registry standard ocelot-service-registry
 
 Push to PCF
 ----
-First push tbe backing service from OcelotEureakExample/BackingService:
+First push the backing service from OcelotEureakExample/BackingService:
 ```
 cf push
 ```
 
-Then push tbe backing service from OcelotEureakExample/Gateway
+Then push the gateway from OcelotEureakExample/Gateway
 ```
 cf push
 
