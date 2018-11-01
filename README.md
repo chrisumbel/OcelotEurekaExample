@@ -2,11 +2,12 @@
 ===================
 
 This project is an example of using the Ocelot API Gateway, 
-Pivotal Cloud Foundry, and the 
+[Pivotal Cloud Foundry](https://pivotal.io/platform), and the 
 [Eureka Service Registry](https://github.com/Netflix/eureka) via Pivotal's 
 [Service Discovery Tile](https://docs.pivotal.io/spring-cloud-services/1-2/service-registry/).
 
-This solution contains two projects: The *Gateway* project which is the Ocelot
+This solution contains two projects: The *Gateway* project which is the 
+[Ocelot](https://github.com/ThreeMammals/Ocelot)
 gateway and *BackingService* which is a simple WebAPI webserive that registers
 with eurka such that it can be fronted by Ocelot.  
 
@@ -36,7 +37,7 @@ cf create-service p-service-registry standard ocelot-service-registry
 ```
 
 Push to PCF
-----
+-----------
 First push the backing service from OcelotEureakExample/BackingService:
 ```
 cf push
@@ -58,5 +59,44 @@ response proxied out of the gateway:
 ]
 ``` 
 
-Note that the gateway maps its root "/" to the backing service's /api/values
-endpoint.
+
+Examining the Configuration
+---------------------------
+
+Ocelot's configuration is defined in `ocelot.json` in the *Gateway* project,
+as directed in *Gateway*'s Program.cs (`.AddJsonFile("ocelot.json")`). 
+
+Note that this maps its root `/` to the backing service's `/api/values`
+endpoint. Further it binds the gateway's Route to a service named 
+`backingService` which is expected to be regiestered with Eureka.
+
+
+The `GlobalConfiguration.ServiceDiscoveryProvider` directive tells Ocelot to
+use Eureka for service discovery, but other providers are supported as well
+such as Consul.
+
+```
+{
+  "ReRoutes": [
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "UpstreamPathTemplate": "/",
+      "UpstreamHttpMethod": [
+        "Get"
+      ],
+      "DownstreamScheme": "https",
+      "ServiceName": "backingService",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "RequestIdKey": "OcRequestId",
+    "AdministrationPath": "/administration",
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka"
+    }
+  }
+}
+```
