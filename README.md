@@ -1,5 +1,7 @@
 ﻿OcelotEureakExample
 ===================
+[Ocelot](https://github.com/ThreeMammals/Ocelot) is a .NET Core API gateway 
+similar to Zuul. 
 
 This project is an example of using the Ocelot API Gateway, 
 [Pivotal Cloud Foundry](https://pivotal.io/platform), and the 
@@ -11,56 +13,7 @@ This solution contains two projects: The *Gateway* project which is the
 gateway and *BackingService* which is a simple WebAPI webserive that registers
 with eurka such that it can be fronted by Ocelot.  
 
-Ocelot 
-------
-[Ocelot](https://github.com/ThreeMammals/Ocelot) is a .NET Core API gateway 
-similar to Zuul. 
-
-Build
------
-
-Build and publish the backing service in OcelotEureakExample/BackingService
-```
-dotnet publish -r ubuntu.14.04-x64 -o publish
-```
-
-Build and publish the gateway in OcelotEureakExample/Gateway
-```
-dotnet publish -r ubuntu.14.04-x64 -o publish
-```
-
-Create Discovery Service
-------------------------
-
-```
-cf create-service p-service-registry standard ocelot-service-registry
-```
-
-Push to PCF
------------
-First push the backing service from OcelotEureakExample/BackingService:
-```
-cf push
-```
-
-Then push the gateway from OcelotEureakExample/Gateway
-```
-cf push
-
-```
-
-Finally, go to the Gateway's URL and you should see the backing services 
-response proxied out of the gateway:
-
- ```
- [
-"value1",
-"value2"
-]
-``` 
-
-
-Examining the Configuration
+Configuring Ocelot
 ---------------------------
 
 Ocelot's configuration is defined in `ocelot.json` in the *Gateway* project,
@@ -100,3 +53,49 @@ such as Consul.
   }
 }
 ```
+
+Buildind and running the example
+================================
+
+Building
+-----
+
+Build and publish the backing service in OcelotEureakExample/BackingService
+```
+dotnet publish -r ubuntu.14.04-x64 -o publish
+```
+
+Build and publish the gateway in OcelotEureakExample/Gateway
+```
+dotnet publish -r ubuntu.14.04-x64 -o publish
+```
+
+Create Discovery Service in Cloud Foundry
+-----------------------------------------
+
+```
+cf create-service p-service-registry standard ocelot-service-registry
+```
+
+Push to PCF
+-----------
+First push the backing service from OcelotEureakExample/BackingService:
+```
+cf push
+```
+
+Then push the gateway from OcelotEureakExample/Gateway
+```
+cf push
+
+```
+
+Finally, go to the Gateway's URL and you should see the backing services 
+response proxied out of the gateway:
+
+ ```
+ [
+"value1",
+"value2"
+]
+``` 
