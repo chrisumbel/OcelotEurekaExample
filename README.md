@@ -90,8 +90,8 @@ cf push
 
 ```
 
-Finally, go to the Gateway's URL and you should see the backing services 
-response proxied out of the gateway:
+Finally, go to the gateway's URL at the root and you should see the backing 
+service's response proxied out of the gateway:
 
  ```
  [
